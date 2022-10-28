@@ -3,13 +3,12 @@
 
 from flask import *
 import json
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/', methods=['GET'])
-@cross_origin(supports_credentials=True)
 
 def home_page():
     data_set = {'slackUsername': '@eshi', 'backend': True, 'age' : 32, 'bio' : 'An enterpreneur, got a lot of experience with Php and taking up a new challenge using Python'}
